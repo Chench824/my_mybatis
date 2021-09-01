@@ -1,0 +1,38 @@
+<mapper namespace="sise.cch.mapper.UserMapper">
+
+    <!--sql的唯一标识：namespace.id来组成 ： statementId-->
+    <select id="findAll" resultType="sise.cch.pojo.User" >
+        select * from user
+    </select>
+
+
+    <!--
+        User user = new User()
+        user.setId(1);
+        user.setUsername("zhangsan")
+    -->
+    <select id="findByCondition" resultType="sise.cch.pojo.User" paramterType="sise.cch.pojo.User">
+        select * from user where id = #{id} and name = #{name}
+    </select>
+
+    <insert id="saveUser" paramterType="sise.cch.pojo.User">
+        insert into user(name) values(#{name})
+    </insert>
+
+    <update id="updateUser" paramterType="sise.cch.pojo.User">
+        update user set name = #{name} where id = #{id}
+    </update>
+
+    <delete id="deleteUserById" paramterType="java.lang.Integer">
+        delete from user where id = #{id}
+    </delete>
+
+    <delete id="deleteUserByName" paramterType="java.lang.String">
+        delete from user where name = #{name}
+    </delete>
+
+    <delete id="deleteUser" paramterType="sise.cch.pojo.User">
+        delete from user where id = #{id}
+    </delete>
+
+</mapper>
